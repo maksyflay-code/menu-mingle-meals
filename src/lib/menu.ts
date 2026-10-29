@@ -71,4 +71,4 @@ export function buildOutForDeliveryMessage(orderId: string, name: string) {
   return `🛵 Olá ${name}! Seu pedido #${orderId} do ${RESTAURANT.name} *saiu para entrega* e já está a caminho. Bom apetite!`;
 }
 
-export const waLink = (phone: string, text: string) => `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+export const waLink = (phone: string, text: string) => `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(text)}`;
