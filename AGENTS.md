@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Orders are sent via WhatsApp click-to-chat links (no WhatsApp API, no database); restaurant config and menu live in src/lib/menu.ts. Why: client wants the simplest setup with zero per-message cost.
