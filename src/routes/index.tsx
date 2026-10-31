@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Minus, Plus, ShoppingBag, X } from "lucide-react";
-import hero from "@/assets/hero-burger.jpg";
+import logo from "@/assets/black_burguer_bbq_logo.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -54,13 +54,10 @@ function Index() {
 
   return (
     <div className="min-h-screen pb-28">
-      <header className="relative h-64 overflow-hidden md:h-80">
-        <img src={hero} alt="Hambúrguer com batata frita" width={1600} height={704} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="bg-hero-fade absolute inset-0" />
-        <div className="relative mx-auto flex h-full max-w-3xl flex-col justify-end px-5 pb-6">
-          <h1 className="font-display text-on-dark text-6xl md:text-7xl">{RESTAURANT.name}</h1>
-          <p className="text-on-dark opacity-90">Escolha seu lanche e peça pelo WhatsApp</p>
-        </div>
+      <header className="flex flex-col items-center px-5 pb-8 pt-12 text-center">
+        <img src={logo.url} alt={RESTAURANT.name} width={1024} height={1024} className="w-64 md:w-80" />
+        <h1 className="sr-only">{RESTAURANT.name}</h1>
+        <p className="text-on-dark opacity-90">Escolha seu lanche e peça pelo WhatsApp</p>
       </header>
 
       <main className="mx-auto max-w-3xl px-5">
