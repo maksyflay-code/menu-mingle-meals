@@ -1,6 +1,6 @@
 // Configuração do restaurante — troque pelos dados reais.
 export const RESTAURANT = {
-  name: "Rei do Sanduíche",
+  name: "Black Burguer BBQ",
   // Número do WhatsApp do restaurante: DDI + DDD + número, só dígitos.
   whatsapp: "5571999999999",
   deliveryFee: 5,
