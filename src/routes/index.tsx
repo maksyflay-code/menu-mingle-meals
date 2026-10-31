@@ -29,7 +29,7 @@ function Index() {
   const [c, setC] = useState<Customer>(empty);
 
   const lines: CartLine[] = useMemo(
-    () => MENU.filter((i) => cart[i.id]).map((item) => ({ item, qty: cart[item.id] })),
+    () => MENU.filter((i) => cart[i.id]).map((item) => ({ item, qty: cart[item.id]! })),
     [cart],
   );
   const subtotal = cartSubtotal(lines);

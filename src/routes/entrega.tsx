@@ -6,11 +6,13 @@ import { RESTAURANT, buildOutForDeliveryMessage, waLink } from "@/lib/menu";
 type Search = { p?: string; n?: string; t?: string };
 
 export const Route = createFileRoute("/entrega")({
-  validateSearch: (s: Record<string, unknown>): Search => ({
-    p: s.p ? String(s.p) : undefined,
-    n: s.n ? String(s.n) : undefined,
-    t: s.t ? String(s.t) : undefined,
-  }),
+  validateSearch: (s: Record<string, unknown>): Search => {
+    const out: Search = {};
+    if (s["p"]) out.p = String(s["p"]);
+    if (s["n"]) out.n = String(s["n"]);
+    if (s["t"]) out.t = String(s["t"]);
+    return out;
+  },
   head: () => ({
     meta: [
       { title: `Avisar saída para entrega — ${RESTAURANT.name}` },
