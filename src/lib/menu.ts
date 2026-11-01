@@ -2,7 +2,7 @@
 export const RESTAURANT = {
   name: "Black Burguer BBQ",
   // Número do WhatsApp do restaurante: DDI + DDD + número, só dígitos.
-  whatsapp: "5571999999999",
+  whatsapp: "557499169621",
   deliveryFee: 4,
 };
 
