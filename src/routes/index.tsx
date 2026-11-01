@@ -88,6 +88,21 @@ function Index() {
         ))}
       </main>
 
+      <footer className="mt-12 px-5 pb-6 text-center text-sm text-muted-foreground">
+        <p>
+          Desenvolvido por{" "}
+          <a
+            href="https://www.linkedin.com/in/maksyflay/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-primary underline-offset-4 hover:underline"
+          >
+            Maksyflay Souza
+          </a>
+        </p>
+      </footer>
+
+
       {count > 0 && !open && (
         <div className="fixed inset-x-0 bottom-0 border-t bg-card p-4">
           <div className="mx-auto max-w-3xl">
