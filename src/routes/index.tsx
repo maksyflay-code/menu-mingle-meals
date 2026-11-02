@@ -64,6 +64,7 @@ function Index() {
         <img src={logo.url} alt={RESTAURANT.name} width={1024} height={1024} className="w-64 md:w-80" />
         <h1 className="sr-only">{RESTAURANT.name}</h1>
         <p className="text-on-dark opacity-90">Escolha seu lanche e peça pelo WhatsApp</p>
+        <p className="mt-2 text-xs text-muted-foreground">Fotos meramente ilustrativas</p>
       </header>
 
       <main className="mx-auto max-w-3xl px-5">
@@ -75,7 +76,7 @@ function Index() {
                 <div key={i.id} className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-3 gap-y-3 rounded-xl border border-border bg-card p-4 shadow-sm sm:flex sm:gap-4">
                   {i.image && (
                     <Button type="button" variant="ghost" onClick={() => { if (i.image) setPhoto({ src: i.image, name: i.name }); }} aria-label={`Ver foto de ${i.name}`} className="col-start-1 row-start-1 h-20 w-20 shrink-0 overflow-hidden rounded-lg p-0 sm:order-none">
-                      <img src={i.image} alt={i.name} loading="lazy" className="h-20 w-20 rounded-lg object-cover" />
+                      <img src={i.image} alt={`Foto ilustrativa de ${i.name}`} loading="lazy" width={1024} height={1024} className="h-20 w-20 rounded-lg object-cover" />
                     </Button>
                   )}
                   <div className="contents sm:block sm:min-w-0 sm:flex-1">
