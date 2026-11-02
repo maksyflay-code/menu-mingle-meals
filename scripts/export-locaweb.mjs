@@ -49,7 +49,7 @@ async function exportAssets(directory) {
     if (!asset.url?.startsWith("/__l5e/assets-v1/")) continue;
     const relative = asset.url.slice(1);
     if (relative.split("/").includes("..") || relative.includes("\\")) {
-      throw new Error(`Chemin de imagem inválido: ${filename}`);
+      throw new Error(`Caminho de imagem inválido: ${filename}`);
     }
     const target = path.join(destination, relative);
     try {
