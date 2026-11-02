@@ -16,6 +16,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: `Escolha seu lanche no cardápio do ${RESTAURANT.name} e envie o pedido pelo WhatsApp.` },
       { property: "og:title", content: `${RESTAURANT.name} — Cardápio` },
       { property: "og:description", content: "Escolha seu lanche e peça pelo WhatsApp." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
@@ -29,7 +31,10 @@ function Index() {
   const [c, setC] = useState<Customer>(empty);
 
   const lines: CartLine[] = useMemo(
-    () => MENU.filter((i) => cart[i.id]).map((item) => ({ item, qty: cart[item.id]! })),
+    () => MENU.flatMap((item) => {
+      const qty = cart[item.id];
+      return qty ? [{ item, qty }] : [];
+    }),
     [cart],
   );
   const subtotal = cartSubtotal(lines);

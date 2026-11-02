@@ -19,6 +19,8 @@ export const Route = createFileRoute("/entrega")({
       { name: "description", content: "Avise o cliente pelo WhatsApp que o pedido saiu para entrega." },
       { property: "og:title", content: "Avisar saída para entrega" },
       { property: "og:description", content: "Envie o aviso de saída para entrega ao cliente." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -27,17 +29,16 @@ export const Route = createFileRoute("/entrega")({
 
 function Entrega() {
   const { p, n, t } = Route.useSearch();
-  const ok = p && n && t;
   return (
     <div className="flex min-h-screen items-center justify-center px-5">
       <div className="w-full max-w-md rounded-2xl border bg-card p-6 text-center shadow-sm">
         <Bike className="mx-auto size-12 text-primary" />
         <h1 className="font-display mt-3 text-4xl">Saiu para entrega</h1>
-        {ok ? (
+        {p && n && t ? (
           <>
             <p className="mt-2 text-muted-foreground">Pedido #{p} · {n}</p>
             <Button asChild size="lg" className="mt-6 w-full bg-accent text-base text-accent-foreground hover:bg-accent/90">
-              <a href={waLink(t!, buildOutForDeliveryMessage(p!, n!))}>Avisar cliente no WhatsApp</a>
+              <a href={waLink(t, buildOutForDeliveryMessage(p, n))}>Avisar cliente no WhatsApp</a>
             </Button>
           </>
         ) : (
