@@ -6,13 +6,26 @@ export const RESTAURANT = {
   deliveryFee: 4,
 };
 
-export type MenuItem = { id: string; name: string; description: string; price: number; category: string };
+import xBacon from "@/assets/x_bacon.jpg.asset.json";
+import xBurguezeira from "@/assets/x_burguezeira.png.asset.json";
+import xCalabresa from "@/assets/x_calabresa.png.asset.json";
+import xEggDuplo from "@/assets/x_egg_duplo.jpg.asset.json";
+import xOnion from "@/assets/x_onion_crocante.jpg.asset.json";
+import xSaladao from "@/assets/x_saladao.jpg.asset.json";
+import xTudao from "@/assets/x_tudao.jpg.asset.json";
+
+export type MenuItem = { id: string; name: string; description: string; price: number; category: string; image?: string };
+
+const ART = "Hambúrgueres Artesanais";
 
 export const MENU: MenuItem[] = [
-  { id: "x-burguer", name: "X-Burguer", description: "Pão, hambúrguer, queijo e molho da casa", price: 12, category: "Lanches" },
-  { id: "x-bacon", name: "X-Bacon", description: "Hambúrguer, queijo, bacon crocante e salada", price: 15, category: "Lanches" },
-  { id: "franbacon", name: "Franbacon", description: "Frango, bacon, queijo e salada", price: 14, category: "Lanches" },
-  { id: "x-tudo", name: "X-Tudo", description: "Hambúrguer, ovo, presunto, queijo, bacon, salada e milho", price: 20, category: "Lanches" },
+  { id: "x-bacon", name: "X-Bacon", description: "Pão brioche, hambúrguer artesanal de costela 150g, ketchup, fatias de bacon, queijo cheddar, catupiry, picles, alface, tomate e molho artesanal baconese", price: 26.9, category: ART, image: xBacon.url },
+  { id: "x-burguezeira", name: "X-Burguezeira", description: "Pão brioche, hambúrguer artesanal de costela 150g, queijo mussarela e maionese verde artesanal", price: 17.9, category: ART, image: xBurguezeira.url },
+  { id: "x-calabresa", name: "X-Calabresa", description: "Pão com gergilim, hambúrguer artesanal de costela 150g, ketchup, calabresa, queijo mussarela, molho cheddar, picles, alface, tomate e maionese verde artesanal", price: 22.9, category: ART, image: xCalabresa.url },
+  { id: "x-egg-duplo", name: "X-Egg Duplo", description: "Pão com gergilim, hambúrguer artesanal de costela 150g, barbecue, queijo mussarela, dois ovos, alface, tomate e maionese verde artesanal", price: 21.9, category: ART, image: xEggDuplo.url },
+  { id: "x-onion", name: "X-Onion Crocante", description: "Pão brioche, hambúrguer artesanal de costela 150g, molho cheddar, barbecue, queijo cheddar, anéis de cebola, cebola caramelizada e fatias de bacon", price: 33.9, category: ART, image: xOnion.url },
+  { id: "x-saladao", name: "X-Saladão", description: "Pão brioche, hambúrguer artesanal de costela 150g, ketchup, queijo cheddar, catupiry, picles, alface, tomate, cebola roxa e maionese verde artesanal", price: 19.9, category: ART, image: xSaladao.url },
+  { id: "x-tudao", name: "X-Tudão", description: "Pão com gergilim, hambúrguer artesanal de costela 150g, ketchup, calabresa acebolada caramelizada, fatias de bacon, queijo mussarela, ovo, alface, tomate, catupiry e maionese verde artesanal", price: 35.9, category: ART, image: xTudao.url },
   { id: "batata", name: "Batata Frita", description: "Porção média crocante", price: 10, category: "Acompanhamentos" },
   { id: "refri-lata", name: "Refrigerante Lata", description: "350ml", price: 6, category: "Bebidas" },
   { id: "suco", name: "Suco Natural", description: "500ml — laranja, maracujá ou acerola", price: 8, category: "Bebidas" },

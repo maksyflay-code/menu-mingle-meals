@@ -28,6 +28,7 @@ const empty: Customer = { name: "", phone: "", address: "", neighborhood: "", pa
 function Index() {
   const [cart, setCart] = useState<Record<string, number>>({});
   const [open, setOpen] = useState(false);
+  const [photo, setPhoto] = useState<{ src: string; name: string } | null>(null);
   const [c, setC] = useState<Customer>(empty);
 
   const lines: CartLine[] = useMemo(
@@ -72,6 +73,11 @@ function Index() {
             <div className="grid gap-3">
               {MENU.filter((i) => i.category === cat).map((i) => (
                 <div key={i.id} className="flex items-center gap-4 rounded-xl border bg-card p-4 shadow-sm">
+                  {i.image && (
+                    <button type="button" onClick={() => setPhoto({ src: i.image!, name: i.name })} aria-label={`Ver foto de ${i.name}`} className="shrink-0">
+                      <img src={i.image} alt={i.name} loading="lazy" className="h-20 w-20 rounded-lg object-cover" />
+                    </button>
+                  )}
                   <div className="flex-1">
                     <h3 className="font-semibold">{i.name}</h3>
                     <p className="text-sm text-muted-foreground">{i.description}</p>
@@ -115,6 +121,13 @@ function Index() {
               <ShoppingBag /> Ver pedido ({count}) · {brl(subtotal)}
             </Button>
           </div>
+        </div>
+      )}
+
+      {photo && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-background/90 p-4" onClick={() => setPhoto(null)}>
+          <Button size="icon" variant="ghost" className="absolute right-4 top-4" aria-label="Fechar foto"><X /></Button>
+          <img src={photo.src} alt={photo.name} className="max-h-[85vh] max-w-full rounded-xl object-contain" />
         </div>
       )}
 
