@@ -72,14 +72,14 @@ function Index() {
             <h2 className="font-display mb-3 text-2xl text-primary sm:text-3xl">{cat}</h2>
             <div className="grid gap-3">
               {MENU.filter((i) => i.category === cat).map((i) => (
-                <div key={i.id} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-3 rounded-xl border border-border bg-card p-4 shadow-sm sm:flex sm:gap-4">
+                <div key={i.id} className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-3 gap-y-3 rounded-xl border border-border bg-card p-4 shadow-sm sm:flex sm:gap-4">
                   {i.image && (
-                    <Button type="button" variant="ghost" onClick={() => { if (i.image) setPhoto({ src: i.image, name: i.name }); }} aria-label={`Ver foto de ${i.name}`} className="col-start-2 row-start-1 h-20 w-20 shrink-0 overflow-hidden rounded-lg p-0 sm:order-none">
+                    <Button type="button" variant="ghost" onClick={() => { if (i.image) setPhoto({ src: i.image, name: i.name }); }} aria-label={`Ver foto de ${i.name}`} className="col-start-1 row-start-1 h-20 w-20 shrink-0 overflow-hidden rounded-lg p-0 sm:order-none">
                       <img src={i.image} alt={i.name} loading="lazy" className="h-20 w-20 rounded-lg object-cover" />
                     </Button>
                   )}
                   <div className="contents sm:block sm:min-w-0 sm:flex-1">
-                    <h3 className="col-start-1 row-start-1 min-w-0 break-words text-lg font-semibold sm:text-base">{i.name}</h3>
+                    <h3 className={`${i.image ? "col-start-2" : "col-span-2"} row-start-1 min-w-0 break-words text-lg font-semibold sm:text-base`}>{i.name}</h3>
                     <p className="col-span-2 row-start-2 min-w-0 text-sm leading-relaxed text-muted-foreground sm:leading-normal">{i.description}</p>
                     <p className="col-start-1 row-start-3 font-bold text-primary sm:mt-1">{brl(i.price)}</p>
                   </div>
@@ -90,7 +90,7 @@ function Index() {
                       <Button size="icon" className="h-10 w-10 sm:h-9 sm:w-9" onClick={() => change(i.id, 1)} aria-label="Adicionar"><Plus /></Button>
                     </div>
                   ) : (
-                    <Button className="col-start-2 row-start-3 h-10 shrink-0 sm:h-9" onClick={() => change(i.id, 1)}><Plus /> Adicionar</Button>
+                    <Button className="col-start-2 row-start-3 h-10 justify-self-end shrink-0 sm:h-9" onClick={() => change(i.id, 1)}><Plus /> Adicionar</Button>
                   )}
                 </div>
               ))}
