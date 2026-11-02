@@ -1,10 +1,10 @@
-# Hospedagem Locaweb
-
 # Cardápio real
 
-- [ ] Substituir todos os exemplos pelos 13 lanches informados e seus preços.
-- [ ] Usar fotos ilustrativas temporárias e validar o pedido e a exportação.
-- [ ] Enviar comandos de instalação e geração para o notebook Debian.
+- [x] Substituir todos os exemplos pelos 13 lanches informados e seus preços.
+- [x] Usar fotos ilustrativas temporárias; pedido validado no celular e teste de exportação aprovado.
+- [x] Enviar comandos de instalação e geração para o notebook Debian.
+
+# Hospedagem Locaweb
 
 - [x] Configurar geração estática das duas páginas mantendo a publicação Lovable.
 - [x] Preparar exportação e instruções para upload na hospedagem Apache; teste de exportação aprovado.
