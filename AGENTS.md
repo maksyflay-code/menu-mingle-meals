@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Orders are sent via WhatsApp click-to-chat links (no WhatsApp API, no database); restaurant config and menu live in src/lib/menu.ts. Why: client wants the simplest setup with zero per-message cost.
+- Prerender both public routes and export only verified client HTML/assets with scripts/export-locaweb.mjs for Apache shared hosting; keep the TanStack Start Worker configuration for Lovable. Why: shared hosting cannot execute the server bundle, and delivery query parameters must remain browser-readable.
