@@ -69,28 +69,28 @@ function Index() {
       <main className="mx-auto max-w-3xl px-5">
         {categories.map((cat) => (
           <section key={cat} className="mt-8">
-            <h2 className="font-display mb-3 text-3xl text-primary">{cat}</h2>
+            <h2 className="font-display mb-3 text-2xl text-primary sm:text-3xl">{cat}</h2>
             <div className="grid gap-3">
               {MENU.filter((i) => i.category === cat).map((i) => (
-                <div key={i.id} className="flex items-center gap-4 rounded-xl border bg-card p-4 shadow-sm">
+                <div key={i.id} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-3 rounded-xl border border-border bg-card p-4 shadow-sm sm:flex sm:gap-4">
                   {i.image && (
-                    <button type="button" onClick={() => setPhoto({ src: i.image!, name: i.name })} aria-label={`Ver foto de ${i.name}`} className="shrink-0">
+                    <Button type="button" variant="ghost" onClick={() => { if (i.image) setPhoto({ src: i.image, name: i.name }); }} aria-label={`Ver foto de ${i.name}`} className="col-start-2 row-start-1 h-20 w-20 shrink-0 overflow-hidden rounded-lg p-0 sm:order-none">
                       <img src={i.image} alt={i.name} loading="lazy" className="h-20 w-20 rounded-lg object-cover" />
-                    </button>
+                    </Button>
                   )}
-                  <div className="flex-1">
-                    <h3 className="font-semibold">{i.name}</h3>
-                    <p className="text-sm text-muted-foreground">{i.description}</p>
-                    <p className="mt-1 font-bold text-primary">{brl(i.price)}</p>
+                  <div className="contents sm:block sm:min-w-0 sm:flex-1">
+                    <h3 className="col-start-1 row-start-1 min-w-0 break-words text-lg font-semibold sm:text-base">{i.name}</h3>
+                    <p className="col-span-2 row-start-2 min-w-0 text-sm leading-relaxed text-muted-foreground sm:leading-normal">{i.description}</p>
+                    <p className="col-start-1 row-start-3 font-bold text-primary sm:mt-1">{brl(i.price)}</p>
                   </div>
                   {cart[i.id] ? (
-                    <div className="flex items-center gap-2">
-                      <Button size="icon" variant="outline" onClick={() => change(i.id, -1)} aria-label="Remover"><Minus /></Button>
+                    <div className="col-start-2 row-start-3 flex shrink-0 items-center justify-end gap-2">
+                      <Button size="icon" variant="outline" className="h-10 w-10 sm:h-9 sm:w-9" onClick={() => change(i.id, -1)} aria-label="Remover"><Minus /></Button>
                       <span className="w-5 text-center font-bold">{cart[i.id]}</span>
-                      <Button size="icon" onClick={() => change(i.id, 1)} aria-label="Adicionar"><Plus /></Button>
+                      <Button size="icon" className="h-10 w-10 sm:h-9 sm:w-9" onClick={() => change(i.id, 1)} aria-label="Adicionar"><Plus /></Button>
                     </div>
                   ) : (
-                    <Button onClick={() => change(i.id, 1)}><Plus /> Adicionar</Button>
+                    <Button className="col-start-2 row-start-3 h-10 shrink-0 sm:h-9" onClick={() => change(i.id, 1)}><Plus /> Adicionar</Button>
                   )}
                 </div>
               ))}
