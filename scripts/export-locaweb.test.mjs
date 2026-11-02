@@ -19,11 +19,16 @@ test("export contains both static routes, Apache config and assets, never Worker
     await writeFile(path.join(cwd, "dist/client/entrega/index.html"), "Entrega");
     await writeFile(path.join(cwd, "dist/client/assets/site.js"), "export {};");
     await writeFile(path.join(cwd, "dist/client/_worker.js"), "private server");
+    await mkdir(path.join(cwd, "src/assets"), { recursive: true });
+    await mkdir(path.join(cwd, "dist/client/__l5e/assets-v1/test"), { recursive: true });
+    await writeFile(path.join(cwd, "dist/client/__l5e/assets-v1/test/logo.jpg"), "logo original");
+    await writeFile(path.join(cwd, "src/assets/logo.jpg.asset.json"), JSON.stringify({ url: "/__l5e/assets-v1/test/logo.jpg" }));
     const result = spawnSync(process.execPath, [exporter], { cwd, encoding: "utf8" });
     assert.equal(result.status, 0, result.stderr);
     assert.equal(await readFile(path.join(cwd, "dist/locaweb/entrega/index.html"), "utf8"), "Entrega");
     await access(path.join(cwd, "dist/locaweb/assets/site.js"));
     await access(path.join(cwd, "dist/locaweb/.htaccess"));
+    assert.equal(await readFile(path.join(cwd, "dist/locaweb/__l5e/assets-v1/test/logo.jpg"), "utf8"), "logo original");
     await assert.rejects(access(path.join(cwd, "dist/locaweb/_worker.js")));
     await writeFile(path.join(cwd, "dist/client/index.html"), '<div id="root"></div>');
     const invalid = spawnSync(process.execPath, [exporter], { cwd, encoding: "utf8" });
