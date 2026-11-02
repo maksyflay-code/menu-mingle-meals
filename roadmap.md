@@ -1,3 +1,9 @@
+# Cardápio real
+
+- [x] Substituir todos os exemplos pelos 13 lanches informados e seus preços.
+- [x] Usar fotos ilustrativas temporárias; pedido validado no celular e teste de exportação aprovado.
+- [x] Enviar comandos de instalação e geração para o notebook Debian.
+
 # Hospedagem Locaweb
 
 - [x] Configurar geração estática das duas páginas mantendo a publicação Lovable.

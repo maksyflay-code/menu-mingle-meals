@@ -1,4 +1,4 @@
-// Configuração do restaurante — troque pelos dados reais.
+// Configuração real do restaurante.
 export const RESTAURANT = {
   name: "Black Burguer BBQ",
   // Número do WhatsApp do restaurante: DDI + DDD + número, só dígitos.
@@ -6,29 +6,26 @@ export const RESTAURANT = {
   deliveryFee: 4,
 };
 
-import xBacon from "@/assets/x_bacon.jpg.asset.json";
-import xBurguezeira from "@/assets/x_burguezeira.png.asset.json";
-import xCalabresa from "@/assets/x_calabresa.png.asset.json";
-import xEggDuplo from "@/assets/x_egg_duplo.jpg.asset.json";
-import xOnion from "@/assets/x_onion_crocante.jpg.asset.json";
-import xSaladao from "@/assets/x_saladao.jpg.asset.json";
-import xTudao from "@/assets/x_tudao.jpg.asset.json";
+import parrillaPhoto from "@/assets/parrilla-ilustrativo.jpg";
+import duploPhoto from "@/assets/duplo-ilustrativo.jpg";
+import chickenPhoto from "@/assets/chicken-ilustrativo.jpg";
 
 export type MenuItem = { id: string; name: string; description: string; price: number; category: string; image?: string };
 
-const ART = "Hambúrgueres Artesanais";
-
 export const MENU: MenuItem[] = [
-  { id: "x-bacon", name: "X-Bacon", description: "Pão brioche, hambúrguer artesanal de costela 150g, ketchup, fatias de bacon, queijo cheddar, catupiry, picles, alface, tomate e molho artesanal baconese", price: 26.9, category: ART, image: xBacon.url },
-  { id: "x-burguezeira", name: "X-Burguezeira", description: "Pão brioche, hambúrguer artesanal de costela 150g, queijo mussarela e maionese verde artesanal", price: 17.9, category: ART, image: xBurguezeira.url },
-  { id: "x-calabresa", name: "X-Calabresa", description: "Pão com gergilim, hambúrguer artesanal de costela 150g, ketchup, calabresa, queijo mussarela, molho cheddar, picles, alface, tomate e maionese verde artesanal", price: 22.9, category: ART, image: xCalabresa.url },
-  { id: "x-egg-duplo", name: "X-Egg Duplo", description: "Pão com gergilim, hambúrguer artesanal de costela 150g, barbecue, queijo mussarela, dois ovos, alface, tomate e maionese verde artesanal", price: 21.9, category: ART, image: xEggDuplo.url },
-  { id: "x-onion", name: "X-Onion Crocante", description: "Pão brioche, hambúrguer artesanal de costela 150g, molho cheddar, barbecue, queijo cheddar, anéis de cebola, cebola caramelizada e fatias de bacon", price: 33.9, category: ART, image: xOnion.url },
-  { id: "x-saladao", name: "X-Saladão", description: "Pão brioche, hambúrguer artesanal de costela 150g, ketchup, queijo cheddar, catupiry, picles, alface, tomate, cebola roxa e maionese verde artesanal", price: 19.9, category: ART, image: xSaladao.url },
-  { id: "x-tudao", name: "X-Tudão", description: "Pão com gergilim, hambúrguer artesanal de costela 150g, ketchup, calabresa acebolada caramelizada, fatias de bacon, queijo mussarela, ovo, alface, tomate, catupiry e maionese verde artesanal", price: 35.9, category: ART, image: xTudao.url },
-  { id: "batata", name: "Batata Frita", description: "Porção média crocante", price: 10, category: "Acompanhamentos" },
-  { id: "refri-lata", name: "Refrigerante Lata", description: "350ml", price: 6, category: "Bebidas" },
-  { id: "suco", name: "Suco Natural", description: "500ml — laranja, maracujá ou acerola", price: 8, category: "Bebidas" },
+  { id: "parrilla-black", name: "PARRILLA - BLACK", description: "Pão Brioche, Bland 100g, Queijo Mussarela, Tomate, Alface Americano e Molho da casa", price: 17.9, category: "Parrilla", image: parrillaPhoto },
+  { id: "parrilla-gorgonzola", name: "PARRILLA - GORGONZOLA", description: "Pão Brioche, Bland 140g, Bacon, Queijo Gorgonzola, Rúcula, Cebola Roxa e Molho da casa", price: 31.9, category: "Parrilla", image: parrillaPhoto },
+  { id: "parrilla-chicken", name: "PARRILLA - CHICKEN", description: "Pão Brioche, Bland Frango 140g, Queijo Mussarela, Tomate, Alface Americano e Molho de ervas", price: 25.9, category: "Parrilla", image: chickenPhoto },
+  { id: "parrilla-bacon", name: "PARRILLA - BACON", description: "Pão Brioche, Bland 140g, Queijo Cheddar, Bacon, Molho BBQ e Cebola caramelizada", price: 27.9, category: "Parrilla", image: parrillaPhoto },
+  { id: "parrilla-catupiry", name: "PARRILLA - CATUPIRY", description: "Pão Brioche, Bland 140g, Catupiry, Bacon, Molho BBQ e Cebola caramelizada", price: 26.9, category: "Parrilla", image: parrillaPhoto },
+  { id: "parrilla-cheddar", name: "PARRILLA - CHEDDAR", description: "Pão Brioche, Bland 140g, Cheddar Cremoso, Molho BBQ e Cebola caramelizada", price: 28.9, category: "Parrilla", image: parrillaPhoto },
+  { id: "parrilla-salad", name: "PARRILLA - SALAD", description: "Pão de Gergelin, Bland 140g, Bacon, Alface Americana, Tomate, Cebola Roxa, Picles e Molho da casa", price: 22.9, category: "Parrilla", image: parrillaPhoto },
+  { id: "duplo-gorgonzola", name: "DUPLO - GORGONZOLA", description: "Pão Brioche, 2 Bland 140g, 2 Bacon, Queijo Gorgonzola, Rúcula, Cebola Roxa e Molho da casa", price: 38.9, category: "Duplo", image: duploPhoto },
+  { id: "duplo-chicken", name: "DUPLO - CHICKEN", description: "Pão Brioche, 2 Bland Frango 140g, 2 Queijo Mussarela, Tomate, Alface Americano e Molho de ervas", price: 31.9, category: "Duplo", image: chickenPhoto },
+  { id: "duplo-bacon", name: "DUPLO - BACON", description: "Pão Brioche, 2 Bland 140g, 2 Queijo Cheddar, Bacon, Molho BBQ e Cebola caramelizada", price: 34.9, category: "Duplo", image: duploPhoto },
+  { id: "duplo-catupiry", name: "DUPLO - CATUPIRY", description: "Pão Brioche, 2 Bland 140g, Catupiry, Bacon, Molho BBQ e Cebola Caramelizada", price: 33.9, category: "Duplo", image: duploPhoto },
+  { id: "duplo-cheddar", name: "DUPLO - CHEDDAR", description: "Pão Brioche, 2 Bland 140g, 2 Cheddar Cremoso, Molho BBQ e Cebola caramelizada", price: 35.9, category: "Duplo", image: duploPhoto },
+  { id: "duplo-salad", name: "DUPLO - SALAD", description: "Pão de Gergelim, 2 Bland 140g, 2 Bacon, Alface Americana, Tomate, Cebola Roxa, Picles e Molho da casa", price: 29.9, category: "Duplo", image: duploPhoto },
 ];
 
 export const brl = (v: number) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });

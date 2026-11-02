@@ -8,7 +8,7 @@ for (const candidate of candidates) {
   try {
     const home = await readFile(path.join(candidate, "index.html"), "utf8");
     await access(path.join(candidate, "entrega/index.html"));
-    if (!home.includes("X-Bacon") && !home.includes("Lanches")) continue;
+    if (!home.includes("PARRILLA - BLACK")) continue;
     source = candidate;
     break;
   } catch {
