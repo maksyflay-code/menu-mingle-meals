@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { MENU, buildOrderMessage, cartSubtotal, toWaPhone, RESTAURANT } from "./menu";
+import { MENU, buildOrderMessage, cartSubtotal, toWaPhone, RESTAURANT, isOpenNow } from "./menu";
 
 const c = { name: "Ana", phone: "(71) 98888-7777", address: "Rua A, 1", neighborhood: "Centro", payment: "Pix", notes: "" };
 const black = MENU.find((item) => item.id === "parrilla-black");

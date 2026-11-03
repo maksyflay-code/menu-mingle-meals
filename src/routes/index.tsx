@@ -6,7 +6,7 @@ import logo from "@/assets/black_burguer_bbq_logo.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useCart } from "@/hooks/use-cart";
-import { MENU, RESTAURANT, brl, cartSubtotal, type CartLine } from "@/lib/menu";
+import { MENU, RESTAURANT, brl, cartSubtotal, isOpenNow, type CartLine } from "@/lib/menu";
 
 export const Route = createFileRoute("/")({
   head: () => ({
