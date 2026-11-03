@@ -98,9 +98,6 @@ function Index() {
 
   return (
     <div className="relative min-h-screen bg-background pb-28">
-      {/* Fundo decorativo apenas nas laterais, do topo ao rodapé */}
-      <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 hidden lg:block" style={{ width: "max(calc((100% - 48rem) / 2), 0px)", backgroundImage: `url(${doodle})`, backgroundSize: "480px", backgroundPosition: "right center" }} />
-      <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 hidden lg:block" style={{ width: "max(calc((100% - 48rem) / 2), 0px)", backgroundImage: `url(${doodle})`, backgroundSize: "480px", backgroundPosition: "left center" }} />
       <header className="flex flex-col items-center bg-background px-5 pb-8 pt-12 text-center">
         <img src={logo.url} alt={RESTAURANT.name} width={1024} height={1024} className="w-64 mix-blend-lighten md:w-80" />
         <h1 className="sr-only">{RESTAURANT.name}</h1>
@@ -129,7 +126,11 @@ function Index() {
         </div>
       </nav>
 
-      <main className="relative z-10 mx-auto max-w-3xl bg-background px-5">
+      <div className="relative">
+        {/* Fundo decorativo apenas nas laterais do cardápio, do topo ao rodapé */}
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 hidden lg:block" style={{ width: "max(calc((100% - 48rem) / 2), 0px)", backgroundImage: `url(${doodle})`, backgroundSize: "480px", backgroundPosition: "right center" }} />
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 hidden lg:block" style={{ width: "max(calc((100% - 48rem) / 2), 0px)", backgroundImage: `url(${doodle})`, backgroundSize: "480px", backgroundPosition: "left center" }} />
+        <main className="relative z-10 mx-auto max-w-3xl bg-background px-5">
         {visible.length === 0 && <p className="mt-10 text-center text-muted-foreground">Nenhum produto encontrado.</p>}
         {categories.filter((cat) => visible.some((i) => i.category === cat)).map((cat) => (
           <section key={cat} id={sectionId(cat)} data-cat={cat} className="mt-8 scroll-mt-36">
@@ -176,6 +177,8 @@ function Index() {
           </a>
         </p>
       </footer>
+      </div>
+
 
 
       {count > 0 && !open && (
