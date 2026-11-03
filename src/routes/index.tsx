@@ -68,7 +68,7 @@ function Index() {
     const onScroll = () => {
       let current = "";
       document.querySelectorAll<HTMLElement>("section[data-cat]").forEach((s) => {
-        if (s.getBoundingClientRect().top < 180) current = s.dataset.cat ?? "";
+        if (s.getBoundingClientRect().top < 180) current = s.dataset["cat"] ?? "";
       });
       if (current) setActive(current);
     };
