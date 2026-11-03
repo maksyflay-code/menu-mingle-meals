@@ -35,6 +35,8 @@ const sectionId = (cat: string) =>
 function Index() {
   const { cart, change } = useCart();
   const [photo, setPhoto] = useState<{ src: string; name: string } | null>(null);
+  // Selo Aberto/Fechado só depois de montar: o HTML estático precisa renderizar igual ao SSR.
+  const [openNow, setOpenNow] = useState<boolean | null>(null);
 
   const lines: CartLine[] = useMemo(
     () => MENU.flatMap((item) => {
@@ -74,13 +76,33 @@ function Index() {
     chipsRef.current?.querySelector<HTMLElement>(`[data-chip="${sectionId(active)}"]`)?.scrollIntoView({ inline: "nearest", block: "nearest" });
   }, [active]);
 
+  // Atualiza o selo Aberto/Fechado a cada minuto.
+  useEffect(() => {
+    const update = () => setOpenNow(isOpenNow());
+    update();
+    const t = setInterval(update, 60_000);
+    return () => clearInterval(t);
+  }, []);
+
   return (
-    <div className="relative min-h-screen bg-background pb-28">
+    <div className="relative flex min-h-screen flex-col bg-background pb-28">
       <header className="flex flex-col items-center bg-background px-5 pb-8 pt-12 text-center">
         <img src={logo.url} alt={RESTAURANT.name} width={1024} height={1024} className="w-64 mix-blend-lighten md:w-80" />
         <h1 className="sr-only">{RESTAURANT.name}</h1>
         <p className="text-on-dark opacity-90">Escolha seu lanche e peça pelo WhatsApp</p>
-        <p className="mt-3 rounded-full border border-primary/40 bg-background/80 px-4 py-1 text-sm font-semibold text-primary">🕕 Aberto todos os dias, das 18h às 00h</p>
+        {openNow === null ? (
+          <p className="mt-3 rounded-full border border-primary/40 bg-background/80 px-4 py-1 text-sm font-semibold text-primary">🕕 Aberto todos os dias, das 18h às 00h</p>
+        ) : openNow ? (
+          <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-green-500/40 bg-background/80 px-4 py-1 text-sm font-semibold text-green-500">
+            <span aria-hidden className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
+            Aberto agora · 18h às 00h
+          </p>
+        ) : (
+          <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-red-500/40 bg-background/80 px-4 py-1 text-sm font-semibold text-red-500">
+            <span aria-hidden className="h-2 w-2 rounded-full bg-red-500" />
+            Fechado · abre às 18h
+          </p>
+        )}
         <p className="mt-2 text-xs text-muted-foreground">Fotos meramente ilustrativas</p>
       </header>
 
@@ -104,7 +126,7 @@ function Index() {
         </div>
       </nav>
 
-      <div className="relative">
+      <div className="relative flex w-full flex-1 flex-col">
         {/* Fundo decorativo apenas nas laterais do cardápio, do topo ao rodapé */}
         <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 hidden lg:block" style={{ width: "max(calc((100% - 48rem) / 2), 0px)", backgroundImage: `url(${doodle})`, backgroundSize: "480px", backgroundPosition: "right center" }} />
         <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 hidden lg:block" style={{ width: "max(calc((100% - 48rem) / 2), 0px)", backgroundImage: `url(${doodle})`, backgroundSize: "480px", backgroundPosition: "left center" }} />

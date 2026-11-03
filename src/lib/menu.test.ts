@@ -86,3 +86,17 @@ describe("pedido", () => {
     expect(buildOrderMessage("100", [{ item: black, qty: 1 }], c, "https://x.app")).toContain("/entrega?p=100&n=Ana&t=5571988887777");
   });
 });
+
+describe("horário de funcionamento (18h à meia-noite, todos os dias)", () => {
+  it.each([
+    ["18:00", 18, 0, true],
+    ["19:30", 19, 30, true],
+    ["23:59", 23, 59, true],
+    ["00:00", 0, 0, false],
+    ["00:30", 0, 30, false],
+    ["12:00", 12, 0, false],
+    ["17:59", 17, 59, false],
+  ])("%s → aberto = %s", (_hora, h, m, aberto) => {
+    expect(isOpenNow(new Date(2026, 10, 3, h, m))).toBe(aberto);
+  });
+});
