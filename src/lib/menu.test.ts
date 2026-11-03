@@ -4,12 +4,18 @@ import { MENU, buildOrderMessage, cartSubtotal, toWaPhone, RESTAURANT } from "./
 const c = { name: "Ana", phone: "(71) 98888-7777", address: "Rua A, 1", neighborhood: "Centro", payment: "Pix", notes: "" };
 const black = MENU.find((item) => item.id === "parrilla-black");
 const gorgonzola = MENU.find((item) => item.id === "parrilla-gorgonzola");
-if (!black || !gorgonzola) throw new Error("Lanches reais obrigatórios ausentes");
+const coca = MENU.find((item) => item.id === "beb-cola");
+const petit = MENU.find((item) => item.id === "sob-petit");
+const cheddar = MENU.find((item) => item.id === "mol-cheddar");
+if (!black || !gorgonzola || !coca || !petit || !cheddar) throw new Error("Itens obrigatórios ausentes");
 
 describe("cardápio real", () => {
+  it("tem 25 itens: 13 lanches + bebidas, sobremesas e molhos", () => {
+    expect(MENU).toHaveLength(25);
+  });
   it("contém somente os 13 lanches reais", () => {
-    expect(MENU).toHaveLength(13);
-    expect(MENU.every((item) => item.id.startsWith("parrilla-") || item.id.startsWith("duplo-"))).toBe(true);
+    const burgers = MENU.filter((item) => item.id.startsWith("parrilla-") || item.id.startsWith("duplo-"));
+    expect(burgers).toHaveLength(13);
   });
   it.each([
     ["parrilla-black", 17.9], ["parrilla-gorgonzola", 31.9],
@@ -21,6 +27,25 @@ describe("cardápio real", () => {
     ["duplo-salad", 29.9],
   ])("%s tem o preço real de R$ %s", (id, price) => {
     expect(MENU.find((item) => item.id === id)?.price).toBe(price);
+  });
+});
+
+describe("categorias e ingredientes", () => {
+  it("usa as categorias pedidas, nesta ordem", () => {
+    const categories = [...new Set(MENU.map((i) => i.category))];
+    expect(categories).toEqual(["Hambúrguer artesanal", "Duplo", "Bebidas", "Sobremesas", "Molhos"]);
+  });
+  it("escreve Blend, nunca Bland", () => {
+    expect(MENU.some((i) => i.description.includes("Bland"))).toBe(false);
+    expect(MENU.filter((i) => i.id.startsWith("parrilla-") || i.id.startsWith("duplo-")).every((i) => i.description.includes("Blend"))).toBe(true);
+  });
+  it("corrige Gergelim nos pães", () => {
+    expect(MENU.some((i) => i.description.includes("Gergelin"))).toBe(false);
+  });
+  it("itens sugeridos têm os preços propostos", () => {
+    expect(coca.price).toBe(6);
+    expect(petit.price).toBe(16.9);
+    expect(cheddar.price).toBe(4);
   });
 });
 
