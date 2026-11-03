@@ -99,8 +99,8 @@ function Index() {
   return (
     <div className="relative min-h-screen bg-background pb-28">
       {/* Fundo decorativo apenas nas laterais, do topo ao rodapé */}
-      <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 hidden w-32 lg:w-40 xl:block" style={{ backgroundImage: `url(${doodle})`, backgroundSize: "480px", backgroundPosition: "right center" }} />
-      <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 hidden w-32 lg:w-40 xl:block" style={{ backgroundImage: `url(${doodle})`, backgroundSize: "480px", backgroundPosition: "left center" }} />
+      <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 hidden w-32 xl:w-44 lg:block" style={{ backgroundImage: `url(${doodle})`, backgroundSize: "480px", backgroundPosition: "right center" }} />
+      <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 hidden w-32 xl:w-44 lg:block" style={{ backgroundImage: `url(${doodle})`, backgroundSize: "480px", backgroundPosition: "left center" }} />
       <header className="flex flex-col items-center bg-background px-5 pb-8 pt-12 text-center">
         <img src={logo.url} alt={RESTAURANT.name} width={1024} height={1024} className="w-64 mix-blend-lighten md:w-80" />
         <h1 className="sr-only">{RESTAURANT.name}</h1>
