@@ -35,6 +35,11 @@ describe("categorias e ingredientes", () => {
     const categories = [...new Set(MENU.map((i) => i.category))];
     expect(categories).toEqual(["Hambúrguer artesanal", "Bebidas", "Sobremesas", "Molhos"]);
   });
+  it("lanches duplos ficam junto com os hambúrgueres, sem categoria própria", () => {
+    const duplos = MENU.filter((item) => item.id.startsWith("duplo-"));
+    expect(duplos).toHaveLength(6);
+    expect(duplos.every((item) => item.category === "Hambúrguer artesanal")).toBe(true);
+  });
   it("escreve Blend, nunca Bland", () => {
     expect(MENU.some((i) => i.description.includes("Bland"))).toBe(false);
     expect(MENU.filter((i) => i.id.startsWith("parrilla-") || i.id.startsWith("duplo-")).every((i) => i.description.includes("Blend"))).toBe(true);
