@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
-import { Minus, Plus, ShoppingBag, X } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight, Minus, Plus, Search, ShoppingBag, X } from "lucide-react";
 import logo from "@/assets/black_burguer_bbq_logo.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,6 +25,17 @@ export const Route = createFileRoute("/")({
 
 const empty: Customer = { name: "", phone: "", address: "", neighborhood: "", payment: "Pix", notes: "" };
 
+const CATEGORY_EMOJI: Record<string, string> = {
+  "Hambúrguer artesanal": "🍔",
+  Duplo: "🔥",
+  Bebidas: "🥤",
+  Sobremesas: "🍰",
+  Molhos: "🥫",
+};
+
+const sectionId = (cat: string) =>
+  "cat-" + cat.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
 function Index() {
   const [cart, setCart] = useState<Record<string, number>>({});
   const [open, setOpen] = useState(false);
@@ -41,6 +52,33 @@ function Index() {
   const subtotal = cartSubtotal(lines);
   const count = lines.reduce((s, l) => s + l.qty, 0);
   const categories = [...new Set(MENU.map((i) => i.category))];
+  const [query, setQuery] = useState("");
+  const [active, setActive] = useState(categories[0] ?? "");
+  const chipsRef = useRef<HTMLDivElement>(null);
+  const q = query.trim().toLowerCase();
+  const visible = q ? MENU.filter((i) => `${i.name} ${i.description}`.toLowerCase().includes(q)) : MENU;
+
+  const goTo = (cat: string) => {
+    setActive(cat);
+    document.getElementById(sectionId(cat))?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  // Destaca a categoria visível enquanto o cliente rola a página.
+  useEffect(() => {
+    const onScroll = () => {
+      let current = "";
+      document.querySelectorAll<HTMLElement>("section[data-cat]").forEach((s) => {
+        if (s.getBoundingClientRect().top < 180) current = s.dataset["cat"] ?? "";
+      });
+      if (current) setActive(current);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    chipsRef.current?.querySelector<HTMLElement>(`[data-chip="${sectionId(active)}"]`)?.scrollIntoView({ inline: "nearest", block: "nearest" });
+  }, [active]);
 
   const change = (id: string, d: number) =>
     setCart((p) => {
@@ -67,12 +105,33 @@ function Index() {
         <p className="mt-2 text-xs text-muted-foreground">Fotos meramente ilustrativas</p>
       </header>
 
+      <nav className="sticky top-0 z-40 border-b border-border bg-background/95 py-3 backdrop-blur" aria-label="Categorias">
+        <div className="mx-auto max-w-3xl px-5">
+          <div className="relative mb-3">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input placeholder="Busque por um produto" value={query} onChange={(e) => setQuery(e.target.value)} className="pl-9" aria-label="Buscar produto" />
+          </div>
+          <div className="flex items-center gap-2">
+            <Button size="icon" variant="outline" className="hidden h-9 w-9 shrink-0 sm:inline-flex" aria-label="Categorias anteriores" onClick={() => chipsRef.current?.scrollBy({ left: -200, behavior: "smooth" })}><ChevronLeft /></Button>
+            <div ref={chipsRef} className="flex flex-1 gap-2 overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {categories.map((cat) => (
+                <Button key={cat} data-chip={sectionId(cat)} size="sm" variant={active === cat ? "default" : "outline"} className="shrink-0 rounded-full" onClick={() => goTo(cat)}>
+                  <span aria-hidden>{CATEGORY_EMOJI[cat] ?? "🍽️"}</span> {cat}
+                </Button>
+              ))}
+            </div>
+            <Button size="icon" variant="outline" className="hidden h-9 w-9 shrink-0 sm:inline-flex" aria-label="Próximas categorias" onClick={() => chipsRef.current?.scrollBy({ left: 200, behavior: "smooth" })}><ChevronRight /></Button>
+          </div>
+        </div>
+      </nav>
+
       <main className="mx-auto max-w-3xl px-5">
-        {categories.map((cat) => (
-          <section key={cat} className="mt-8">
-            <h2 className="font-display mb-3 text-2xl text-primary sm:text-3xl">{cat}</h2>
+        {visible.length === 0 && <p className="mt-10 text-center text-muted-foreground">Nenhum produto encontrado.</p>}
+        {categories.filter((cat) => visible.some((i) => i.category === cat)).map((cat) => (
+          <section key={cat} id={sectionId(cat)} data-cat={cat} className="mt-8 scroll-mt-36">
+            <h2 className="font-display mb-3 text-2xl text-primary sm:text-3xl">{CATEGORY_EMOJI[cat] ?? ""} {cat}</h2>
             <div className="grid gap-3">
-              {MENU.filter((i) => i.category === cat).map((i) => (
+              {visible.filter((i) => i.category === cat).map((i) => (
                 <div key={i.id} className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-3 gap-y-3 rounded-xl border border-border bg-card p-4 shadow-sm sm:flex sm:gap-4">
                   {i.image && (
                     <Button type="button" variant="ghost" onClick={() => { if (i.image) setPhoto({ src: i.image, name: i.name }); }} aria-label={`Ver foto de ${i.name}`} className="col-start-1 row-start-1 h-20 w-20 shrink-0 overflow-hidden rounded-lg p-0 sm:order-none">
