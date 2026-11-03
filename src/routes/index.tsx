@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
 const empty: Customer = { name: "", phone: "", address: "", neighborhood: "", payment: "Pix", notes: "" };
 
 const CATEGORY_EMOJI: Record<string, string> = {
-  "Hambúrguer artesanal": "🍔",
+  "Hambúrgueres Artesanais": "🍔",
   Bebidas: "🥤",
   Sobremesas: "🍰",
   Molhos: "🥫",
