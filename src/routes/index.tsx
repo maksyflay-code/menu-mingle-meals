@@ -115,7 +115,7 @@ function Index() {
             <Button size="icon" variant="outline" className="hidden h-9 w-9 shrink-0 sm:inline-flex" aria-label="Categorias anteriores" onClick={() => chipsRef.current?.scrollBy({ left: -200, behavior: "smooth" })}><ChevronLeft /></Button>
             <div ref={chipsRef} className="flex flex-1 gap-2 overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {categories.map((cat) => (
-                <Button key={cat} size="sm" variant={active === cat ? "default" : "outline"} className="shrink-0 rounded-full" onClick={() => goTo(cat)}>
+                <Button key={cat} data-chip={sectionId(cat)} size="sm" variant={active === cat ? "default" : "outline"} className="shrink-0 rounded-full" onClick={() => goTo(cat)}>
                   <span aria-hidden>{CATEGORY_EMOJI[cat] ?? "🍽️"}</span> {cat}
                 </Button>
               ))}
