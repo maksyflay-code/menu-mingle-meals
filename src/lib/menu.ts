@@ -16,23 +16,23 @@ import duploTropicanaPhoto from "@/assets/duplo-tropicana-ilustrativo.jpg";
 export type MenuItem = { id: string; name: string; description: string; price: number; category: string; image?: string };
 
 export const MENU: MenuItem[] = [
-  // Hambúrguer artesanal
-  { id: "parrilla-black", name: "PARRILLA - BLACK", description: "Pão Brioche, Blend 100g, Queijo Mussarela, Tomate, Alface Americano e Molho da casa", price: 17.9, category: "Hambúrguer artesanal", image: parrillaPhoto },
-  { id: "parrilla-gorgonzola", name: "PARRILLA - GORGONZOLA", description: "Pão Brioche, Blend 140g, Bacon, Queijo Gorgonzola, Rúcula, Cebola Roxa e Molho da casa", price: 31.9, category: "Hambúrguer artesanal", image: parrillaPhoto },
-  { id: "parrilla-chicken", name: "PARRILLA - CHICKEN", description: "Pão Brioche, Blend Frango 140g, Queijo Mussarela, Tomate, Alface Americano e Molho de ervas", price: 25.9, category: "Hambúrguer artesanal", image: chickenPhoto },
-  { id: "parrilla-bacon", name: "PARRILLA - BACON", description: "Pão Brioche, Blend 140g, Queijo Cheddar, Bacon, Molho BBQ e Cebola caramelizada", price: 27.9, category: "Hambúrguer artesanal", image: parrillaPhoto },
-  { id: "parrilla-catupiry", name: "PARRILLA - CATUPIRY", description: "Pão Brioche, Blend 140g, Catupiry, Bacon, Molho BBQ e Cebola caramelizada", price: 26.9, category: "Hambúrguer artesanal", image: parrillaPhoto },
-  { id: "parrilla-cheddar", name: "PARRILLA - CHEDDAR", description: "Pão Brioche, Blend 140g, Cheddar Cremoso, Bacon, Molho BBQ e Cebola caramelizada", price: 28.9, category: "Hambúrguer artesanal", image: parrillaPhoto },
-  { id: "parrilla-salad", name: "PARRILLA - SALAD", description: "Pão de Gergelim, Blend 140g, Bacon, Alface Americana, Tomate, Cebola Roxa, Picles e Molho da casa", price: 22.9, category: "Hambúrguer artesanal", image: parrillaPhoto },
-  { id: "parrilla-tropicana", name: "PARRILLA - TROPICANA", description: "Pão c/ Gergelim, Blend 140g, Queijo Cheddar, Queijo Coalho c/ Mel, Bacon, Abacaxi c/ mel, Rúcula, Molho Especial", price: 34.9, category: "Hambúrguer artesanal", image: tropicanaPhoto },
+  // Hambúrgueres Artesanais
+  { id: "parrilla-black", name: "PARRILLA - BLACK", description: "Pão Brioche, Blend 100g, Queijo Mussarela, Tomate, Alface Americano e Molho da casa", price: 17.9, category: "Hambúrgueres Artesanais", image: parrillaPhoto },
+  { id: "parrilla-gorgonzola", name: "PARRILLA - GORGONZOLA", description: "Pão Brioche, Blend 140g, Bacon, Queijo Gorgonzola, Rúcula, Cebola Roxa e Molho da casa", price: 31.9, category: "Hambúrgueres Artesanais", image: parrillaPhoto },
+  { id: "parrilla-chicken", name: "PARRILLA - CHICKEN", description: "Pão Brioche, Blend Frango 140g, Queijo Mussarela, Tomate, Alface Americano e Molho de ervas", price: 25.9, category: "Hambúrgueres Artesanais", image: chickenPhoto },
+  { id: "parrilla-bacon", name: "PARRILLA - BACON", description: "Pão Brioche, Blend 140g, Queijo Cheddar, Bacon, Molho BBQ e Cebola caramelizada", price: 27.9, category: "Hambúrgueres Artesanais", image: parrillaPhoto },
+  { id: "parrilla-catupiry", name: "PARRILLA - CATUPIRY", description: "Pão Brioche, Blend 140g, Catupiry, Bacon, Molho BBQ e Cebola caramelizada", price: 26.9, category: "Hambúrgueres Artesanais", image: parrillaPhoto },
+  { id: "parrilla-cheddar", name: "PARRILLA - CHEDDAR", description: "Pão Brioche, Blend 140g, Cheddar Cremoso, Bacon, Molho BBQ e Cebola caramelizada", price: 28.9, category: "Hambúrgueres Artesanais", image: parrillaPhoto },
+  { id: "parrilla-salad", name: "PARRILLA - SALAD", description: "Pão de Gergelim, Blend 140g, Bacon, Alface Americana, Tomate, Cebola Roxa, Picles e Molho da casa", price: 22.9, category: "Hambúrgueres Artesanais", image: parrillaPhoto },
+  { id: "parrilla-tropicana", name: "PARRILLA - TROPICANA", description: "Pão c/ Gergelim, Blend 140g, Queijo Cheddar, Queijo Coalho c/ Mel, Bacon, Abacaxi c/ mel, Rúcula, Molho Especial", price: 34.9, category: "Hambúrgueres Artesanais", image: tropicanaPhoto },
   // Duplos ficam junto com os hambúrgueres, a pedido do cliente (sem categoria própria).
-  { id: "duplo-gorgonzola", name: "DUPLO - GORGONZOLA", description: "Pão Brioche, 2 Blend 140g, 2 Bacon, Queijo Gorgonzola, Rúcula, Cebola Roxa e Molho da casa", price: 38.9, category: "Hambúrguer artesanal", image: duploPhoto },
-  { id: "duplo-chicken", name: "DUPLO - CHICKEN", description: "Pão Brioche, 2 Blend Frango 140g, 2 Queijo Mussarela, Tomate, Alface Americano e Molho de ervas", price: 31.9, category: "Hambúrguer artesanal", image: chickenPhoto },
-  { id: "duplo-bacon", name: "DUPLO - BACON", description: "Pão Brioche, 2 Blend 140g, 2 Queijo Cheddar, Bacon, Molho BBQ e Cebola caramelizada", price: 34.9, category: "Hambúrguer artesanal", image: duploPhoto },
-  { id: "duplo-catupiry", name: "DUPLO - CATUPIRY", description: "Pão Brioche, 2 Blend 140g, Catupiry, Bacon, Molho BBQ e Cebola Caramelizada", price: 33.9, category: "Hambúrguer artesanal", image: duploPhoto },
-  { id: "duplo-cheddar", name: "DUPLO - CHEDDAR", description: "Pão Brioche, 2 Blend 140g, 2 Cheddar Cremoso, 2 Bacon, Molho BBQ e Cebola caramelizada", price: 35.9, category: "Hambúrguer artesanal", image: duploPhoto },
-  { id: "duplo-salad", name: "DUPLO - SALAD", description: "Pão de Gergelim, 2 Blend 140g, 2 Bacon, Alface Americana, Tomate, Cebola Roxa, Picles e Molho da casa", price: 29.9, category: "Hambúrguer artesanal", image: duploPhoto },
-  { id: "duplo-tropicana", name: "DUPLO - TROPICANA", description: "Pão c/ Gergelim, 2 Blend 140g, 2 Queijo Cheddar, Queijo Coalho c/ Mel, 2 Bacon, Abacaxi c/ mel, Rúcula, Molho Especial", price: 42.9, category: "Hambúrguer artesanal", image: duploTropicanaPhoto },
+  { id: "duplo-gorgonzola", name: "DUPLO - GORGONZOLA", description: "Pão Brioche, 2 Blend 140g, 2 Bacon, Queijo Gorgonzola, Rúcula, Cebola Roxa e Molho da casa", price: 38.9, category: "Hambúrgueres Artesanais", image: duploPhoto },
+  { id: "duplo-chicken", name: "DUPLO - CHICKEN", description: "Pão Brioche, 2 Blend Frango 140g, 2 Queijo Mussarela, Tomate, Alface Americano e Molho de ervas", price: 31.9, category: "Hambúrgueres Artesanais", image: chickenPhoto },
+  { id: "duplo-bacon", name: "DUPLO - BACON", description: "Pão Brioche, 2 Blend 140g, 2 Queijo Cheddar, Bacon, Molho BBQ e Cebola caramelizada", price: 34.9, category: "Hambúrgueres Artesanais", image: duploPhoto },
+  { id: "duplo-catupiry", name: "DUPLO - CATUPIRY", description: "Pão Brioche, 2 Blend 140g, Catupiry, Bacon, Molho BBQ e Cebola Caramelizada", price: 33.9, category: "Hambúrgueres Artesanais", image: duploPhoto },
+  { id: "duplo-cheddar", name: "DUPLO - CHEDDAR", description: "Pão Brioche, 2 Blend 140g, 2 Cheddar Cremoso, 2 Bacon, Molho BBQ e Cebola caramelizada", price: 35.9, category: "Hambúrgueres Artesanais", image: duploPhoto },
+  { id: "duplo-salad", name: "DUPLO - SALAD", description: "Pão de Gergelim, 2 Blend 140g, 2 Bacon, Alface Americana, Tomate, Cebola Roxa, Picles e Molho da casa", price: 29.9, category: "Hambúrgueres Artesanais", image: duploPhoto },
+  { id: "duplo-tropicana", name: "DUPLO - TROPICANA", description: "Pão c/ Gergelim, 2 Blend 140g, 2 Queijo Cheddar, Queijo Coalho c/ Mel, 2 Bacon, Abacaxi c/ mel, Rúcula, Molho Especial", price: 42.9, category: "Hambúrgueres Artesanais", image: duploTropicanaPhoto },
   // Bebidas (itens sugeridos, aguardando confirmação do cliente)
   { id: "beb-cola", name: "Coca-Cola Lata 350ml", description: "Lata gelada 350ml", price: 6, category: "Bebidas" },
   { id: "beb-cola-zero", name: "Coca-Cola Zero Lata 350ml", description: "Lata gelada 350ml", price: 6, category: "Bebidas" },
