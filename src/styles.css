@@ -83,6 +83,7 @@
   --input: oklch(0.93 0.03 85 / 18%);
   --ring: oklch(0.82 0.14 85);
   --font-display: "Bebas Neue", sans-serif;
+  --font-menu-title: "Luckiest Guy", sans-serif;
   --font-body: "Barlow", sans-serif;
   --chart-1: oklch(0.82 0.14 85);
   --chart-2: oklch(0.646 0.222 41.116);
@@ -149,6 +150,12 @@
 @utility font-display {
   font-family: var(--font-display);
   letter-spacing: 0.02em;
+}
+
+/* Títulos das categorias: cartoon dourado, como na arte de referência. */
+@utility font-menu-title {
+  font-family: var(--font-menu-title);
+  letter-spacing: 0.04em;
 }
 
 @utility bg-hero-fade {

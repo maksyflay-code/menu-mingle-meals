@@ -112,7 +112,7 @@ function Index() {
         {visible.length === 0 && <p className="mt-10 text-center text-muted-foreground">Nenhum produto encontrado.</p>}
         {categories.filter((cat) => visible.some((i) => i.category === cat)).map((cat) => (
           <section key={cat} id={sectionId(cat)} data-cat={cat} className="mt-8 scroll-mt-36">
-            <h2 className="font-display mb-3 text-2xl text-primary sm:text-3xl">{CATEGORY_EMOJI[cat] ?? ""} {cat}</h2>
+            <h2 className="font-menu-title mb-3 text-xl leading-none text-primary sm:text-2xl">{CATEGORY_EMOJI[cat] ?? ""} {cat}</h2>
             <div className="grid gap-3">
               {visible.filter((i) => i.category === cat).map((i) => (
                 <div key={i.id} className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-3 gap-y-3 rounded-xl border border-border bg-card p-4 shadow-sm sm:flex sm:gap-4">
