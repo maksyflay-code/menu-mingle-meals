@@ -1,6 +1,6 @@
 # Cardápio real
 
-- [x] Substituir todos os exemplos pelos 13 lanches informados e seus preços.
+- [x] Atualizar para os 15 lanches informados em 03/11, incluindo Tropicana e bacon nos Cheddar, com fotos ilustrativas e pedido validado.
 - [x] Usar fotos ilustrativas temporárias; pedido validado no celular e teste de exportação aprovado.
 - [x] Enviar comandos de instalação e geração para o notebook Debian.
 

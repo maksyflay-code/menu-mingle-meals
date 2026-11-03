@@ -10,12 +10,17 @@ const cheddar = MENU.find((item) => item.id === "mol-cheddar");
 if (!black || !gorgonzola || !coca || !petit || !cheddar) throw new Error("Itens obrigatórios ausentes");
 
 describe("cardápio real", () => {
-  it("tem 25 itens: 13 lanches + bebidas, sobremesas e molhos", () => {
-    expect(MENU).toHaveLength(25);
+  it("tem 27 itens: 15 lanches + bebidas, sobremesas e molhos", () => {
+    expect(MENU).toHaveLength(27);
   });
-  it("contém somente os 13 lanches reais", () => {
+  it("contém somente os 15 lanches reais", () => {
     const burgers = MENU.filter((item) => item.id.startsWith("parrilla-") || item.id.startsWith("duplo-"));
-    expect(burgers).toHaveLength(13);
+    expect(burgers.map((item) => item.id)).toEqual([
+      "parrilla-black", "parrilla-gorgonzola", "parrilla-chicken", "parrilla-bacon",
+      "parrilla-catupiry", "parrilla-cheddar", "parrilla-salad", "parrilla-tropicana",
+      "duplo-gorgonzola", "duplo-chicken", "duplo-bacon", "duplo-catupiry",
+      "duplo-cheddar", "duplo-salad", "duplo-tropicana",
+    ]);
   });
   it.each([
     ["parrilla-black", 17.9], ["parrilla-gorgonzola", 31.9],
@@ -25,6 +30,7 @@ describe("cardápio real", () => {
     ["duplo-chicken", 31.9], ["duplo-bacon", 34.9],
     ["duplo-catupiry", 33.9], ["duplo-cheddar", 35.9],
     ["duplo-salad", 29.9],
+    ["parrilla-tropicana", 34.9], ["duplo-tropicana", 42.9],
   ])("%s tem o preço real de R$ %s", (id, price) => {
     expect(MENU.find((item) => item.id === id)?.price).toBe(price);
   });
@@ -37,7 +43,7 @@ describe("categorias e ingredientes", () => {
   });
   it("lanches duplos ficam junto com os hambúrgueres, sem categoria própria", () => {
     const duplos = MENU.filter((item) => item.id.startsWith("duplo-"));
-    expect(duplos).toHaveLength(6);
+    expect(duplos).toHaveLength(7);
     expect(duplos.every((item) => item.category === "Hambúrguer artesanal")).toBe(true);
   });
   it("escreve Blend, nunca Bland", () => {
@@ -51,6 +57,18 @@ describe("categorias e ingredientes", () => {
     expect(coca.price).toBe(6);
     expect(petit.price).toBe(16.9);
     expect(cheddar.price).toBe(4);
+  });
+  it("Parrilla Cheddar inclui bacon", () => {
+    expect(MENU.find((item) => item.id === "parrilla-cheddar")?.description.split(", ")).toContain("Bacon");
+  });
+  it("Duplo Cheddar inclui 2 Bacon", () => {
+    expect(MENU.find((item) => item.id === "duplo-cheddar")?.description.split(", ")).toContain("2 Bacon");
+  });
+  it.each([
+    ["parrilla-tropicana", "Pão c/ Gergelim, Blend 140g, Queijo Cheddar, Queijo Coalho c/ Mel, Bacon, Abacaxi c/ mel, Rúcula, Molho Especial"],
+    ["duplo-tropicana", "Pão c/ Gergelim, 2 Blend 140g, 2 Queijo Cheddar, Queijo Coalho c/ Mel, 2 Bacon, Abacaxi c/ mel, Rúcula, Molho Especial"],
+  ])("%s tem os ingredientes informados", (id, ingredients) => {
+    expect(MENU.find((item) => item.id === id)?.description).toBe(ingredients);
   });
 });
 
