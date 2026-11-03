@@ -17,6 +17,8 @@ test("export contains both static routes, Apache config and assets, never Worker
     await writeFile(path.join(cwd, "hosting/locaweb.htaccess"), "DirectoryIndex index.html");
     await writeFile(path.join(cwd, "dist/client/index.html"), "<h1>PARRILLA - BLACK</h1>");
     await writeFile(path.join(cwd, "dist/client/entrega/index.html"), "Entrega");
+    await mkdir(path.join(cwd, "dist/client/carrinho"), { recursive: true });
+    await writeFile(path.join(cwd, "dist/client/carrinho/index.html"), "Carrinho");
     await writeFile(path.join(cwd, "dist/client/assets/site.js"), "export {};");
     await writeFile(path.join(cwd, "dist/client/_worker.js"), "private server");
     await mkdir(path.join(cwd, "src/assets"), { recursive: true });
