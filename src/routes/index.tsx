@@ -97,7 +97,7 @@ function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-repeat pb-28" style={{ backgroundImage: `linear-gradient(oklch(0.05 0 0 / 0.55), oklch(0.05 0 0 / 0.55)), url(${doodle})`, backgroundSize: "auto, 520px" }}>
+    <div className="min-h-screen pb-28" style={{ backgroundImage: `linear-gradient(oklch(0.05 0 0 / 0.3), oklch(0.05 0 0 / 0.3)), url(${doodle})`, backgroundSize: "auto, 520px" }}>
       <header className="flex flex-col items-center bg-background px-5 pb-8 pt-12 text-center">
         <img src={logo.url} alt={RESTAURANT.name} width={1024} height={1024} className="w-64 mix-blend-lighten md:w-80" />
         <h1 className="sr-only">{RESTAURANT.name}</h1>
@@ -126,7 +126,7 @@ function Index() {
         </div>
       </nav>
 
-      <main className="mx-auto max-w-3xl px-5">
+      <main className="mx-auto max-w-3xl bg-background px-5">
         {visible.length === 0 && <p className="mt-10 text-center text-muted-foreground">Nenhum produto encontrado.</p>}
         {categories.filter((cat) => visible.some((i) => i.category === cat)).map((cat) => (
           <section key={cat} id={sectionId(cat)} data-cat={cat} className="mt-8 scroll-mt-36">
@@ -160,7 +160,7 @@ function Index() {
         ))}
       </main>
 
-      <footer className="mt-12 px-5 pb-6 text-center text-sm text-muted-foreground">
+      <footer className="mx-auto max-w-3xl bg-background px-5 pb-6 pt-2 text-center text-sm text-muted-foreground">
         <p>
           Desenvolvido por{" "}
           <a
