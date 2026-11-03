@@ -109,7 +109,7 @@ function Index() {
         <p className="mt-2 text-xs text-muted-foreground">Fotos meramente ilustrativas</p>
       </header>
 
-      <nav className="sticky top-0 z-40 border-b border-border bg-background/95 py-3 backdrop-blur" aria-label="Categorias">
+      <nav className="sticky top-0 z-40 border-b border-border bg-background py-3" aria-label="Categorias">
         <div className="mx-auto max-w-3xl px-5">
           <div className="relative mb-3">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -129,7 +129,7 @@ function Index() {
         </div>
       </nav>
 
-      <main className="mx-auto max-w-3xl bg-background px-5">
+      <main className="relative z-10 mx-auto max-w-3xl bg-background px-5">
         {visible.length === 0 && <p className="mt-10 text-center text-muted-foreground">Nenhum produto encontrado.</p>}
         {categories.filter((cat) => visible.some((i) => i.category === cat)).map((cat) => (
           <section key={cat} id={sectionId(cat)} data-cat={cat} className="mt-8 scroll-mt-36">
