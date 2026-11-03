@@ -21,13 +21,13 @@ export const MENU: MenuItem[] = [
   { id: "parrilla-catupiry", name: "PARRILLA - CATUPIRY", description: "Pão Brioche, Blend 140g, Catupiry, Bacon, Molho BBQ e Cebola caramelizada", price: 26.9, category: "Hambúrguer artesanal", image: parrillaPhoto },
   { id: "parrilla-cheddar", name: "PARRILLA - CHEDDAR", description: "Pão Brioche, Blend 140g, Cheddar Cremoso, Molho BBQ e Cebola caramelizada", price: 28.9, category: "Hambúrguer artesanal", image: parrillaPhoto },
   { id: "parrilla-salad", name: "PARRILLA - SALAD", description: "Pão de Gergelim, Blend 140g, Bacon, Alface Americana, Tomate, Cebola Roxa, Picles e Molho da casa", price: 22.9, category: "Hambúrguer artesanal", image: parrillaPhoto },
-  // Duplo
-  { id: "duplo-gorgonzola", name: "DUPLO - GORGONZOLA", description: "Pão Brioche, 2 Blend 140g, 2 Bacon, Queijo Gorgonzola, Rúcula, Cebola Roxa e Molho da casa", price: 38.9, category: "Duplo", image: duploPhoto },
-  { id: "duplo-chicken", name: "DUPLO - CHICKEN", description: "Pão Brioche, 2 Blend Frango 140g, 2 Queijo Mussarela, Tomate, Alface Americano e Molho de ervas", price: 31.9, category: "Duplo", image: chickenPhoto },
-  { id: "duplo-bacon", name: "DUPLO - BACON", description: "Pão Brioche, 2 Blend 140g, 2 Queijo Cheddar, Bacon, Molho BBQ e Cebola caramelizada", price: 34.9, category: "Duplo", image: duploPhoto },
-  { id: "duplo-catupiry", name: "DUPLO - CATUPIRY", description: "Pão Brioche, 2 Blend 140g, Catupiry, Bacon, Molho BBQ e Cebola Caramelizada", price: 33.9, category: "Duplo", image: duploPhoto },
-  { id: "duplo-cheddar", name: "DUPLO - CHEDDAR", description: "Pão Brioche, 2 Blend 140g, 2 Cheddar Cremoso, Molho BBQ e Cebola caramelizada", price: 35.9, category: "Duplo", image: duploPhoto },
-  { id: "duplo-salad", name: "DUPLO - SALAD", description: "Pão de Gergelim, 2 Blend 140g, 2 Bacon, Alface Americana, Tomate, Cebola Roxa, Picles e Molho da casa", price: 29.9, category: "Duplo", image: duploPhoto },
+  // Duplos ficam junto com os hambúrgueres, a pedido do cliente (sem categoria própria).
+  { id: "duplo-gorgonzola", name: "DUPLO - GORGONZOLA", description: "Pão Brioche, 2 Blend 140g, 2 Bacon, Queijo Gorgonzola, Rúcula, Cebola Roxa e Molho da casa", price: 38.9, category: "Hambúrguer artesanal", image: duploPhoto },
+  { id: "duplo-chicken", name: "DUPLO - CHICKEN", description: "Pão Brioche, 2 Blend Frango 140g, 2 Queijo Mussarela, Tomate, Alface Americano e Molho de ervas", price: 31.9, category: "Hambúrguer artesanal", image: chickenPhoto },
+  { id: "duplo-bacon", name: "DUPLO - BACON", description: "Pão Brioche, 2 Blend 140g, 2 Queijo Cheddar, Bacon, Molho BBQ e Cebola caramelizada", price: 34.9, category: "Hambúrguer artesanal", image: duploPhoto },
+  { id: "duplo-catupiry", name: "DUPLO - CATUPIRY", description: "Pão Brioche, 2 Blend 140g, Catupiry, Bacon, Molho BBQ e Cebola Caramelizada", price: 33.9, category: "Hambúrguer artesanal", image: duploPhoto },
+  { id: "duplo-cheddar", name: "DUPLO - CHEDDAR", description: "Pão Brioche, 2 Blend 140g, 2 Cheddar Cremoso, Molho BBQ e Cebola caramelizada", price: 35.9, category: "Hambúrguer artesanal", image: duploPhoto },
+  { id: "duplo-salad", name: "DUPLO - SALAD", description: "Pão de Gergelim, 2 Blend 140g, 2 Bacon, Alface Americana, Tomate, Cebola Roxa, Picles e Molho da casa", price: 29.9, category: "Hambúrguer artesanal", image: duploPhoto },
   // Bebidas (itens sugeridos, aguardando confirmação do cliente)
   { id: "beb-cola", name: "Coca-Cola Lata 350ml", description: "Lata gelada 350ml", price: 6, category: "Bebidas" },
   { id: "beb-cola-zero", name: "Coca-Cola Zero Lata 350ml", description: "Lata gelada 350ml", price: 6, category: "Bebidas" },
