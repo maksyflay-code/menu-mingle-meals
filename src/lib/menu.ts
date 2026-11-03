@@ -4,6 +4,7 @@ export const RESTAURANT = {
   // Número do WhatsApp do restaurante: DDI + DDD + número, só dígitos.
   whatsapp: "5574991269621",
   deliveryFee: 4,
+  hours: "Todos os dias, das 18h às 00h",
 };
 
 import parrillaPhoto from "@/assets/parrilla-ilustrativo.jpg";
