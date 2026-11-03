@@ -98,7 +98,7 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-repeat pb-28" style={{ backgroundImage: `linear-gradient(oklch(0.05 0 0 / 0.55), oklch(0.05 0 0 / 0.55)), url(${doodle})`, backgroundSize: "auto, 520px" }}>
-      <header className="flex flex-col items-center px-5 pb-8 pt-12 text-center">
+      <header className="flex flex-col items-center bg-background px-5 pb-8 pt-12 text-center">
         <img src={logo.url} alt={RESTAURANT.name} width={1024} height={1024} className="w-64 mix-blend-lighten md:w-80" />
         <h1 className="sr-only">{RESTAURANT.name}</h1>
         <p className="text-on-dark opacity-90">Escolha seu lanche e peça pelo WhatsApp</p>
