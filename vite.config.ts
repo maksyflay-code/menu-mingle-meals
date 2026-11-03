@@ -6,19 +6,7 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-const debugPrerender = {
-  name: "debug-prerender-requests",
-  configurePreviewServer(server: any) {
-    server.middlewares.use((req: any, res: any, next: () => void) => {
-      console.log("[dbg] request:", req.method, req.url);
-      res.on("finish", () => console.log("[dbg]   ->", res.statusCode, res.getHeader("location") ?? ""));
-      next();
-    });
-  },
-};
-
 export default defineConfig({
-  vite: { plugins: [debugPrerender] },
   tanstackStart: {
     // Both pages are public and browser-only after hydration. Export HTML for
     // shared hosts while preserving the normal Lovable Worker deployment.
