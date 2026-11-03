@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { MENU, buildOrderMessage, cartSubtotal, toWaPhone, RESTAURANT } from "./menu";
+import { MENU, buildOrderMessage, cartSubtotal, toWaPhone, RESTAURANT, isOpenNow } from "./menu";
 
 const c = { name: "Ana", phone: "(71) 98888-7777", address: "Rua A, 1", neighborhood: "Centro", payment: "Pix", notes: "" };
 const black = MENU.find((item) => item.id === "parrilla-black");
@@ -84,5 +84,19 @@ describe("pedido", () => {
   it("link de saída para entrega usa telefone do cliente", () => {
     expect(toWaPhone(c.phone)).toBe("5571988887777");
     expect(buildOrderMessage("100", [{ item: black, qty: 1 }], c, "https://x.app")).toContain("/entrega?p=100&n=Ana&t=5571988887777");
+  });
+});
+
+describe("horário de funcionamento (18h à meia-noite, todos os dias)", () => {
+  it.each([
+    ["18:00", 18, 0, true],
+    ["19:30", 19, 30, true],
+    ["23:59", 23, 59, true],
+    ["00:00", 0, 0, false],
+    ["00:30", 0, 30, false],
+    ["12:00", 12, 0, false],
+    ["17:59", 17, 59, false],
+  ])("%s → aberto = %s", (_hora, h, m, aberto) => {
+    expect(isOpenNow(new Date(2026, 10, 3, h, m))).toBe(aberto);
   });
 });

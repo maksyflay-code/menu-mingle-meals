@@ -52,6 +52,15 @@ export const MENU: MenuItem[] = [
 
 export const brl = (v: number) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
+/**
+ * Funcionamento: todos os dias, das 18h à meia-noite.
+ * 18:00–23:59 = aberto; 00:00–17:59 = fechado.
+ */
+export function isOpenNow(d = new Date()) {
+  const h = d.getHours();
+  return h >= 18;
+}
+
 export type CartLine = { item: MenuItem; qty: number };
 export type Customer = { name: string; phone: string; address: string; neighborhood: string; payment: string; notes: string };
 
