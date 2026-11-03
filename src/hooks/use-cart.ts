@@ -14,6 +14,7 @@ function sanitize(value: unknown): Record<string, number> {
 /** Carrinho salvo no navegador: o cliente não perde os itens ao atualizar a página. */
 export function useCart() {
   const [cart, setCart] = useState<Record<string, number>>({});
+  const [loaded, setLoaded] = useState(false);
 
   // Restaura o carrinho salvo depois da montagem (o HTML estático precisa
   // renderizar vazio para não divergir do SSR/prerender).
@@ -24,15 +25,18 @@ export function useCart() {
     } catch {
       // Carrinho corrompido ou storage bloqueado: começa vazio.
     }
+    setLoaded(true);
   }, []);
 
   useEffect(() => {
+    // Só grava depois de restaurar: evita apagar o carrinho salvo ao trocar de página.
+    if (!loaded) return;
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
     } catch {
       // Storage indisponível: o carrinho funciona apenas nesta visita.
     }
-  }, [cart]);
+  }, [cart, loaded]);
 
   const change = useCallback((id: string, d: number) => {
     setCart((prev) => {
