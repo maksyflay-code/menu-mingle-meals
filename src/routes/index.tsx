@@ -27,7 +27,6 @@ const empty: Customer = { name: "", phone: "", address: "", neighborhood: "", pa
 
 const CATEGORY_EMOJI: Record<string, string> = {
   "Hambúrguer artesanal": "🍔",
-  Duplo: "🔥",
   Bebidas: "🥤",
   Sobremesas: "🍰",
   Molhos: "🥫",
