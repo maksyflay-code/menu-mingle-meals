@@ -152,6 +152,12 @@
   letter-spacing: 0.02em;
 }
 
+/* Títulos das categorias: cartoon dourado, como na arte de referência. */
+@utility font-menu-title {
+  font-family: var(--font-menu-title);
+  letter-spacing: 0.04em;
+}
+
 @utility bg-hero-fade {
   background-image: linear-gradient(to top, oklch(0.15 0.03 40 / 0.9), oklch(0.15 0.03 40 / 0.2));
 }
