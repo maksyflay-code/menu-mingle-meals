@@ -13,13 +13,13 @@ import chickenPhoto from "@/assets/chicken-ilustrativo.jpg";
 export type MenuItem = { id: string; name: string; description: string; price: number; category: string; image?: string };
 
 export const MENU: MenuItem[] = [
-  { id: "parrilla-black", name: "PARRILLA - BLACK", description: "Pão Brioche, Bland 100g, Queijo Mussarela, Tomate, Alface Americano e Molho da casa", price: 17.9, category: "Parrilla", image: parrillaPhoto },
-  { id: "parrilla-gorgonzola", name: "PARRILLA - GORGONZOLA", description: "Pão Brioche, Bland 140g, Bacon, Queijo Gorgonzola, Rúcula, Cebola Roxa e Molho da casa", price: 31.9, category: "Parrilla", image: parrillaPhoto },
-  { id: "parrilla-chicken", name: "PARRILLA - CHICKEN", description: "Pão Brioche, Bland Frango 140g, Queijo Mussarela, Tomate, Alface Americano e Molho de ervas", price: 25.9, category: "Parrilla", image: chickenPhoto },
-  { id: "parrilla-bacon", name: "PARRILLA - BACON", description: "Pão Brioche, Bland 140g, Queijo Cheddar, Bacon, Molho BBQ e Cebola caramelizada", price: 27.9, category: "Parrilla", image: parrillaPhoto },
-  { id: "parrilla-catupiry", name: "PARRILLA - CATUPIRY", description: "Pão Brioche, Bland 140g, Catupiry, Bacon, Molho BBQ e Cebola caramelizada", price: 26.9, category: "Parrilla", image: parrillaPhoto },
-  { id: "parrilla-cheddar", name: "PARRILLA - CHEDDAR", description: "Pão Brioche, Bland 140g, Cheddar Cremoso, Molho BBQ e Cebola caramelizada", price: 28.9, category: "Parrilla", image: parrillaPhoto },
-  { id: "parrilla-salad", name: "PARRILLA - SALAD", description: "Pão de Gergelin, Bland 140g, Bacon, Alface Americana, Tomate, Cebola Roxa, Picles e Molho da casa", price: 22.9, category: "Parrilla", image: parrillaPhoto },
+  { id: "parrilla-black", name: "PARRILLA - BLACK", description: "Pão Brioche, Bland 100g, Queijo Mussarela, Tomate, Alface Americano e Molho da casa", price: 17.9, category: "Hambúrguer", image: parrillaPhoto },
+  { id: "parrilla-gorgonzola", name: "PARRILLA - GORGONZOLA", description: "Pão Brioche, Bland 140g, Bacon, Queijo Gorgonzola, Rúcula, Cebola Roxa e Molho da casa", price: 31.9, category: "Hambúrguer", image: parrillaPhoto },
+  { id: "parrilla-chicken", name: "PARRILLA - CHICKEN", description: "Pão Brioche, Bland Frango 140g, Queijo Mussarela, Tomate, Alface Americano e Molho de ervas", price: 25.9, category: "Hambúrguer", image: chickenPhoto },
+  { id: "parrilla-bacon", name: "PARRILLA - BACON", description: "Pão Brioche, Bland 140g, Queijo Cheddar, Bacon, Molho BBQ e Cebola caramelizada", price: 27.9, category: "Hambúrguer", image: parrillaPhoto },
+  { id: "parrilla-catupiry", name: "PARRILLA - CATUPIRY", description: "Pão Brioche, Bland 140g, Catupiry, Bacon, Molho BBQ e Cebola caramelizada", price: 26.9, category: "Hambúrguer", image: parrillaPhoto },
+  { id: "parrilla-cheddar", name: "PARRILLA - CHEDDAR", description: "Pão Brioche, Bland 140g, Cheddar Cremoso, Molho BBQ e Cebola caramelizada", price: 28.9, category: "Hambúrguer", image: parrillaPhoto },
+  { id: "parrilla-salad", name: "PARRILLA - SALAD", description: "Pão de Gergelin, Bland 140g, Bacon, Alface Americana, Tomate, Cebola Roxa, Picles e Molho da casa", price: 22.9, category: "Hambúrguer", image: parrillaPhoto },
   { id: "duplo-gorgonzola", name: "DUPLO - GORGONZOLA", description: "Pão Brioche, 2 Bland 140g, 2 Bacon, Queijo Gorgonzola, Rúcula, Cebola Roxa e Molho da casa", price: 38.9, category: "Duplo", image: duploPhoto },
   { id: "duplo-chicken", name: "DUPLO - CHICKEN", description: "Pão Brioche, 2 Bland Frango 140g, 2 Queijo Mussarela, Tomate, Alface Americano e Molho de ervas", price: 31.9, category: "Duplo", image: chickenPhoto },
   { id: "duplo-bacon", name: "DUPLO - BACON", description: "Pão Brioche, 2 Bland 140g, 2 Queijo Cheddar, Bacon, Molho BBQ e Cebola caramelizada", price: 34.9, category: "Duplo", image: duploPhoto },
