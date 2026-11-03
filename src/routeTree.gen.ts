@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CarrinhoRouteImport } from './routes/carrinho'
 import { Route as EntregaRouteImport } from './routes/entrega'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarrinhoRoute = CarrinhoRouteImport.update({
+  id: '/carrinho',
+  path: '/carrinho',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntregaRoute = EntregaRouteImport.update({
@@ -25,27 +31,31 @@ const EntregaRoute = EntregaRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/carrinho': typeof CarrinhoRoute
   '/entrega': typeof EntregaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/carrinho': typeof CarrinhoRoute
   '/entrega': typeof EntregaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/carrinho': typeof CarrinhoRoute
   '/entrega': typeof EntregaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/entrega'
+  fullPaths: '/' | '/carrinho' | '/entrega'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/entrega'
-  id: '__root__' | '/' | '/entrega'
+  to: '/' | '/carrinho' | '/entrega'
+  id: '__root__' | '/' | '/carrinho' | '/entrega'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CarrinhoRoute: typeof CarrinhoRoute
   EntregaRoute: typeof EntregaRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carrinho': {
+      id: '/carrinho'
+      path: '/carrinho'
+      fullPath: '/carrinho'
+      preLoaderRoute: typeof CarrinhoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entrega': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CarrinhoRoute: CarrinhoRoute,
   EntregaRoute: EntregaRoute,
 }
 export const routeTree = rootRouteImport
