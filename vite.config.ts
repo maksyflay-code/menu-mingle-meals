@@ -10,7 +10,7 @@ export default defineConfig({
   tanstackStart: {
     // Both pages are public and browser-only after hydration. Export HTML for
     // shared hosts while preserving the normal Lovable Worker deployment.
-    pages: [{ path: "/" }, { path: "/entrega" }],
+    pages: [{ path: "/" }, { path: "/carrinho" }, { path: "/entrega" }],
     prerender: { enabled: true, autoStaticPathsDiscovery: false },
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this

@@ -5,6 +5,8 @@ DirectoryIndex index.html
   # Serve the notification page without a directory redirect. Preserve query
   # parameters so the browser can read the customer and order from WhatsApp.
   RewriteRule ^entrega/?$ entrega/index.html [L]
+  # Serve the cart page directly; cart contents live in the browser (localStorage).
+  RewriteRule ^carrinho/?$ carrinho/index.html [L]
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
