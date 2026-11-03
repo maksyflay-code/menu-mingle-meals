@@ -97,7 +97,10 @@ function Index() {
   };
 
   return (
-    <div className="min-h-screen pb-28" style={{ backgroundImage: `linear-gradient(oklch(0.05 0 0 / 0.3), oklch(0.05 0 0 / 0.3)), url(${doodle})`, backgroundSize: "auto, 520px" }}>
+    <div className="relative min-h-screen bg-background pb-28">
+      {/* Fundo decorativo apenas nas laterais, do topo ao rodapé */}
+      <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 hidden w-32 xl:w-44 lg:block" style={{ backgroundImage: `url(${doodle})`, backgroundSize: "480px", backgroundPosition: "right center" }} />
+      <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 hidden w-32 xl:w-44 lg:block" style={{ backgroundImage: `url(${doodle})`, backgroundSize: "480px", backgroundPosition: "left center" }} />
       <header className="flex flex-col items-center bg-background px-5 pb-8 pt-12 text-center">
         <img src={logo.url} alt={RESTAURANT.name} width={1024} height={1024} className="w-64 mix-blend-lighten md:w-80" />
         <h1 className="sr-only">{RESTAURANT.name}</h1>
@@ -106,7 +109,7 @@ function Index() {
         <p className="mt-2 text-xs text-muted-foreground">Fotos meramente ilustrativas</p>
       </header>
 
-      <nav className="sticky top-0 z-40 border-b border-border bg-background/95 py-3 backdrop-blur" aria-label="Categorias">
+      <nav className="sticky top-0 z-40 border-b border-border bg-background py-3" aria-label="Categorias">
         <div className="mx-auto max-w-3xl px-5">
           <div className="relative mb-3">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -126,7 +129,7 @@ function Index() {
         </div>
       </nav>
 
-      <main className="mx-auto max-w-3xl bg-background px-5">
+      <main className="relative z-10 mx-auto max-w-3xl bg-background px-5">
         {visible.length === 0 && <p className="mt-10 text-center text-muted-foreground">Nenhum produto encontrado.</p>}
         {categories.filter((cat) => visible.some((i) => i.category === cat)).map((cat) => (
           <section key={cat} id={sectionId(cat)} data-cat={cat} className="mt-8 scroll-mt-36">
